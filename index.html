@@ -367,7 +367,7 @@ async function enter(user){
   try{
     const {data,error}=await sb.from('profiles').select('*').eq('id',ME.id).single();
     if(error)throw error;PROFILE=data;
-  }catch(e){}
+  }catch(e){window.ERRMSG=(e&&(e.message||e.code))||String(e)}
   if(!PROFILE){AUTH='error';render();return}
   watchProfile();
   route();
@@ -582,7 +582,7 @@ function viewAuth(){
   if(AUTH==='cargando')return brand+`<div class="empty">Cargando…</div>`;
   if(AUTH==='pending')return brand+`<div class="card"><b>Tu cuenta espera aprobación</b><p class="sub" style="margin:6px 0 0">${esc((PROFILE&&PROFILE.name)||'')} ${esc(ME?ME.email:'')}<br>Avísale al administrador para que te dé acceso. Esta pantalla se abre sola cuando te aprueben.</p><div class="actions"><button class="btn" data-act="checkprofile">Revisar de nuevo</button></div>${out}</div>`;
   if(AUTH==='blocked')return brand+`<div class="card"><b>Esta cuenta no tiene acceso</b><p class="sub" style="margin:6px 0 0">Si crees que es un error, habla con el administrador.</p>${out}</div>`;
-  if(AUTH==='error')return brand+`<div class="card"><b>No pudimos cargar tu perfil</b><p class="sub" style="margin:6px 0 0">Revisa tu conexión e intenta otra vez.</p><div class="actions"><button class="btn primary" data-act="retry">Reintentar</button></div>${out}</div>`;
+  if(AUTH==='error')return brand+`<div class="card"><b>No pudimos cargar tu perfil</b><p class="sub" style="margin:6px 0 0">Revisa tu conexión e intenta otra vez.</p>${window.ERRMSG?`<p class="sub" style="margin:8px 0 0;font-size:12px;word-break:break-word">Detalle: ${esc(window.ERRMSG)}</p>`:""}<div class="actions"><button class="btn primary" data-act="retry">Reintentar</button></div>${out}</div>`;
   if(AUTH==='recovery')return brand+`<form id="recform" class="card" style="display:flex;flex-direction:column;gap:12px"><b>Crea tu nueva contraseña</b>${field('Nueva contraseña','password','password','','required minlength="6" autocomplete="new-password"')}<div class="err" id="autherr">${esc(AUTHMSG)}</div><button class="btn primary" type="submit">Guardar y entrar</button></form>`;
   return brand+`<form id="authform" class="card" style="display:flex;flex-direction:column;gap:12px">
     ${V.signup?field('Tu nombre','name','text','','required autocomplete="name"'):''}

@@ -1,6 +1,6 @@
 // Guarda la app en el teléfono para abrirla sin internet.
 // Los datos viajan por Supabase y no pasan por aquí.
-const CACHE = 'jardin39-v2';
+const CACHE = 'jardin39-v3';
 const SHELL = ['./', 'index.html', 'config.js', 'manifest.webmanifest', 'vendor/jspdf.umd.min.js', 'vendor/supabase.js', 'logo.png', 'logo-pdf.png', 'fonts/limelight-latin-400-normal.woff2', 'fonts/josefin-sans-latin-400-normal.woff2', 'fonts/josefin-sans-latin-500-normal.woff2', 'fonts/josefin-sans-latin-700-normal.woff2', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {

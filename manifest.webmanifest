@@ -1,0 +1,17 @@
+{
+  "name": "Cuentas del Jardín",
+  "short_name": "Jardín 39",
+  "description": "Inventario, pedidos, cotizaciones y balance de El Jardín de la 39",
+  "lang": "es-CO",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6E3C1",
+  "theme_color": "#1E4A12",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
